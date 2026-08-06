@@ -1,31 +1,27 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# UptimePilot — publieke statuspagina (blok 2026-08-06/S7.24)
+#
+# ops.uptimepilot.nl staat BEWUST niet in `sites`: die endpoint zit
+# achter een IP-whitelist (blok S7.17/S7.18) en zou voor de GitHub
+# Actions-runners (wisselende IP's) permanent als "down" verschijnen.
+# Verruiming van die whitelist voor dit doel is expliciet afgewezen —
+# zie het blok en het decision-fragment in de uptimepilot-repo.
+owner: Frankus81
+repo: uptimepilot-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: UptimePilot
+    url: https://uptimepilot.nl/
+  - name: UptimePilot Analytics
+    url: https://analytics.uptimepilot.nl/script.js
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  cname: status.uptimepilot.nl
+  logoUrl: https://raw.githubusercontent.com/Frankus81/uptimepilot-status/master/assets/uptimepilot-logo.svg
+  name: UptimePilot Status
+  introTitle: "**UptimePilot Status**"
+  introMessage: Actuele status van de UptimePilot-diensten. Data rechtstreeks uit deze GitHub-repository — geen eigen server, dus onafhankelijk van onze eigen infrastructuur.
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+    - title: UptimePilot
+      href: https://uptimepilot.nl/
