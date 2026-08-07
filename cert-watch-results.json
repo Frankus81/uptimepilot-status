@@ -1,0 +1,45 @@
+{
+  "gemeten_op": "2026-08-07T09:49:53.451740+00:00",
+  "resultaten": {
+    "dashboard.frankvos.nl": {
+      "dagen_tot_verval": 82,
+      "not_after": "2026-10-28T14:12:29+00:00",
+      "ok": true
+    },
+    "frankvos.nl": {
+      "dagen_tot_verval": 89,
+      "not_after": "2026-11-05T05:17:22+00:00",
+      "ok": true
+    },
+    "hub.frankvos.nl": {
+      "dagen_tot_verval": 89,
+      "not_after": "2026-11-05T05:49:34+00:00",
+      "ok": true
+    },
+    "mail.frankvos.nl": {
+      "dagen_tot_verval": 51,
+      "not_after": "2026-09-27T15:50:00+00:00",
+      "ok": true
+    },
+    "mcp.frankvos.nl": {
+      "dagen_tot_verval": 86,
+      "not_after": "2026-11-01T12:23:21+00:00",
+      "ok": true
+    },
+    "ops.uptimepilot.nl": {
+      "dagen_tot_verval": 89,
+      "not_after": "2026-11-04T18:04:54+00:00",
+      "ok": true
+    },
+    "uptimepilot.nl": {
+      "dagen_tot_verval": 19,
+      "not_after": "2026-08-27T06:24:54+00:00",
+      "ok": true
+    },
+    "webmail.frankvos.nl": {
+      "dagen_tot_verval": 89,
+      "not_after": "2026-11-05T05:17:22+00:00",
+      "ok": true
+    }
+  }
+}
