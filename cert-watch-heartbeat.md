@@ -2,7 +2,7 @@
 
 Deze regel bewijst dat de bewaking zelf leeft -- verandert deze meer dan twee dagen niet, is de bewaking zelf het probleem (zie blok 2026-08-07/S10.5).
 
-Laatste meting: **2026-08-07T12:58:10.710813+00:00**
+Laatste meting: **2026-08-07T12:58:57.322612+00:00**
 
 | Endpoint | Poort | Protocol | Dagen tot verval | Serienummer | Status |
 |---|---|---|---|---|---|
@@ -16,7 +16,7 @@ Laatste meting: **2026-08-07T12:58:10.710813+00:00**
 | uptimepilot.nl | 443 | https | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
 | mail.frankvos.nl | 993 | imaps | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
 | smtp.frankvos.nl | 587 | smtp-starttls | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
-| pop.frankvos.nl | 995 | pop3s | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ⚠ TERUGVAL |
+| pop.frankvos.nl | 995 | pop3s | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
 | mail.uptimepilot.nl | 993 | imaps | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
 | smtp.uptimepilot.nl | 587 | smtp-starttls | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
 | pop.uptimepilot.nl | 995 | pop3s | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
