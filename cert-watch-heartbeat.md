@@ -2,15 +2,21 @@
 
 Deze regel bewijst dat de bewaking zelf leeft -- verandert deze meer dan twee dagen niet, is de bewaking zelf het probleem (zie blok 2026-08-07/S10.5).
 
-Laatste meting: **2026-08-07T09:55:02.012974+00:00**
+Laatste meting: **2026-08-07T12:56:49.368937+00:00**
 
-| Host | Dagen tot verval | notAfter | Status |
-|---|---|---|---|
-| frankvos.nl | 89 | 2026-11-05T05:17:22+00:00 | ok |
-| webmail.frankvos.nl | 89 | 2026-11-05T05:17:22+00:00 | ok |
-| mail.frankvos.nl | 51 | 2026-09-27T15:50:00+00:00 | ok |
-| hub.frankvos.nl | 89 | 2026-11-05T05:49:34+00:00 | ok |
-| dashboard.frankvos.nl | 82 | 2026-10-28T14:12:29+00:00 | ok |
-| mcp.frankvos.nl | 86 | 2026-11-01T12:23:21+00:00 | ok |
-| ops.uptimepilot.nl | 89 | 2026-11-04T18:04:54+00:00 | ok |
-| uptimepilot.nl | 19 | 2026-08-27T06:24:54+00:00 | ⚠ drempel 21 overschreden |
+| Endpoint | Poort | Protocol | Dagen tot verval | Serienummer | Status |
+|---|---|---|---|---|---|
+| frankvos.nl | 443 | https | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
+| webmail.frankvos.nl | 443 | https | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
+| mail.frankvos.nl | 443 | https | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
+| hub.frankvos.nl | 443 | https | 89 | 0512EF393E2E4C1BA8DFE2FD54C4503FEB12 | ok |
+| dashboard.frankvos.nl | 443 | https | 82 | 05FD27CED9FAB9A197586A795081FA28BC56 | ok |
+| mcp.frankvos.nl | 443 | https | 85 | 05B5E1463D4ADEC1A445ADF9A534B5C95AFE | ok |
+| ops.uptimepilot.nl | 443 | https | 89 | 05F54AF326A57220241A6DCC3297CAF09D3E | ok |
+| uptimepilot.nl | 443 | https | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
+| mail.frankvos.nl | 993 | imaps | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
+| smtp.frankvos.nl | 587 | smtp-starttls | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
+| pop.frankvos.nl | 995 | pop3s | 89 | 05C2763DBFEFD44E61B921560C39736D9E87 | ok |
+| mail.uptimepilot.nl | 993 | imaps | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
+| smtp.uptimepilot.nl | 587 | smtp-starttls | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |
+| pop.uptimepilot.nl | 995 | pop3s | 89 | 05D5CDB45BC3931E3CB2B84FB1583B92C9C9 | ok |

@@ -1,53 +1,159 @@
 {
-  "gemeten_op": "2026-08-07T09:55:02.012974+00:00",
+  "gemeten_op": "2026-08-07T12:56:49.368937+00:00",
   "resultaten": {
-    "dashboard.frankvos.nl": {
+    "dashboard.frankvos.nl:443": {
       "dagen_tot_verval": 82,
       "drempel_overschreden": null,
+      "hostname": "dashboard.frankvos.nl",
       "not_after": "2026-10-28T14:12:29+00:00",
-      "ok": true
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05FD27CED9FAB9A197586A795081FA28BC56",
+      "terugval": null
     },
-    "frankvos.nl": {
+    "frankvos.nl:443": {
       "dagen_tot_verval": 89,
       "drempel_overschreden": null,
+      "hostname": "frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
-      "ok": true
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": null
     },
-    "hub.frankvos.nl": {
+    "hub.frankvos.nl:443": {
       "dagen_tot_verval": 89,
       "drempel_overschreden": null,
+      "hostname": "hub.frankvos.nl",
       "not_after": "2026-11-05T05:49:34+00:00",
-      "ok": true
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "0512EF393E2E4C1BA8DFE2FD54C4503FEB12",
+      "terugval": null
     },
-    "mail.frankvos.nl": {
-      "dagen_tot_verval": 51,
-      "drempel_overschreden": null,
-      "not_after": "2026-09-27T15:50:00+00:00",
-      "ok": true
-    },
-    "mcp.frankvos.nl": {
-      "dagen_tot_verval": 86,
-      "drempel_overschreden": null,
-      "not_after": "2026-11-01T12:23:21+00:00",
-      "ok": true
-    },
-    "ops.uptimepilot.nl": {
+    "mail.frankvos.nl:443": {
       "dagen_tot_verval": 89,
       "drempel_overschreden": null,
-      "not_after": "2026-11-04T18:04:54+00:00",
-      "ok": true
-    },
-    "uptimepilot.nl": {
-      "dagen_tot_verval": 19,
-      "drempel_overschreden": 21,
-      "not_after": "2026-08-27T06:24:54+00:00",
-      "ok": true
-    },
-    "webmail.frankvos.nl": {
-      "dagen_tot_verval": 89,
-      "drempel_overschreden": null,
+      "hostname": "mail.frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
-      "ok": true
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": null
+    },
+    "mail.frankvos.nl:993": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "mail.frankvos.nl",
+      "not_after": "2026-11-05T05:17:22+00:00",
+      "ok": true,
+      "port": 993,
+      "protocol": "imaps",
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": null
+    },
+    "mail.uptimepilot.nl:993": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "mail.uptimepilot.nl",
+      "not_after": "2026-11-05T11:42:05+00:00",
+      "ok": true,
+      "port": 993,
+      "protocol": "imaps",
+      "serial": "05D5CDB45BC3931E3CB2B84FB1583B92C9C9",
+      "terugval": null
+    },
+    "mcp.frankvos.nl:443": {
+      "dagen_tot_verval": 85,
+      "drempel_overschreden": null,
+      "hostname": "mcp.frankvos.nl",
+      "not_after": "2026-11-01T12:23:21+00:00",
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05B5E1463D4ADEC1A445ADF9A534B5C95AFE",
+      "terugval": null
+    },
+    "ops.uptimepilot.nl:443": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "ops.uptimepilot.nl",
+      "not_after": "2026-11-04T18:04:54+00:00",
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05F54AF326A57220241A6DCC3297CAF09D3E",
+      "terugval": null
+    },
+    "pop.frankvos.nl:995": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "pop.frankvos.nl",
+      "not_after": "2026-11-05T05:17:22+00:00",
+      "ok": true,
+      "port": 995,
+      "protocol": "pop3s",
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": null
+    },
+    "pop.uptimepilot.nl:995": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "pop.uptimepilot.nl",
+      "not_after": "2026-11-05T11:42:05+00:00",
+      "ok": true,
+      "port": 995,
+      "protocol": "pop3s",
+      "serial": "05D5CDB45BC3931E3CB2B84FB1583B92C9C9",
+      "terugval": null
+    },
+    "smtp.frankvos.nl:587": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "smtp.frankvos.nl",
+      "not_after": "2026-11-05T05:17:22+00:00",
+      "ok": true,
+      "port": 587,
+      "protocol": "smtp-starttls",
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": null
+    },
+    "smtp.uptimepilot.nl:587": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "smtp.uptimepilot.nl",
+      "not_after": "2026-11-05T11:42:05+00:00",
+      "ok": true,
+      "port": 587,
+      "protocol": "smtp-starttls",
+      "serial": "05D5CDB45BC3931E3CB2B84FB1583B92C9C9",
+      "terugval": null
+    },
+    "uptimepilot.nl:443": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "uptimepilot.nl",
+      "not_after": "2026-11-05T11:42:05+00:00",
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05D5CDB45BC3931E3CB2B84FB1583B92C9C9",
+      "terugval": null
+    },
+    "webmail.frankvos.nl:443": {
+      "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
+      "hostname": "webmail.frankvos.nl",
+      "not_after": "2026-11-05T05:17:22+00:00",
+      "ok": true,
+      "port": 443,
+      "protocol": "https",
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": null
     }
   }
 }
