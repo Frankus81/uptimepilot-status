@@ -10,5 +10,5 @@
     { "hostname": "ops.uptimepilot.nl", "port": 443, "starttls": null },
     { "hostname": "uptimepilot.nl", "port": 443, "starttls": null }
   ],
-  "drempels_dagen": [1]
+  "drempels_dagen": [21, 14, 7, 3]
 }
