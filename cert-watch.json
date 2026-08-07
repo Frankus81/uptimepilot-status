@@ -1,0 +1,14 @@
+{
+  "_comment": "Certificaat-expiry-bewaking (blok 2026-08-07/S10.5). Eén regel per te bewaken host -- hostname/poort/starttls, geen aanname buiten dit bestand. `starttls` is null voor gewone HTTPS-hosts (443, directe TLS); gevuld (bv. \"smtp\") voor protocollen waar TLS pas na een plaintext-handshake begint (587/993 etc.) -- momenteel geen van de bewaakte hosts, veld staat klaar voor als dat ooit verandert.",
+  "hosts": [
+    { "hostname": "frankvos.nl", "port": 443, "starttls": null },
+    { "hostname": "webmail.frankvos.nl", "port": 443, "starttls": null },
+    { "hostname": "mail.frankvos.nl", "port": 443, "starttls": null },
+    { "hostname": "hub.frankvos.nl", "port": 443, "starttls": null },
+    { "hostname": "dashboard.frankvos.nl", "port": 443, "starttls": null },
+    { "hostname": "mcp.frankvos.nl", "port": 443, "starttls": null },
+    { "hostname": "ops.uptimepilot.nl", "port": 443, "starttls": null },
+    { "hostname": "uptimepilot.nl", "port": 443, "starttls": null }
+  ],
+  "drempels_dagen": [21, 14, 7, 3]
+}

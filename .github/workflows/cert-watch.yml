@@ -1,0 +1,38 @@
+name: Certificate expiry watch
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.repository }}-cert-watch
+  cancel-in-progress: false
+
+jobs:
+  cert-watch:
+    name: Meet certificaat-expiry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Meet certificaten en signaleer
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+        run: python3 scripts/cert_watch.py
+
+      - name: Commit heartbeat + resultaten
+        if: always()
+        run: |
+          git config user.name "cert-watch-bot"
+          git config user.email "cert-watch-bot@users.noreply.github.com"
+          git add cert-watch-heartbeat.md cert-watch-results.json
+          if ! git diff --cached --quiet; then
+            git commit -m "cert-watch: heartbeat bijgewerkt [skip ci]"
+            git push
+          else
+            echo "geen wijziging in heartbeat/resultaten -- geen commit"
+          fi
