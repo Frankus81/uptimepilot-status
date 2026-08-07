@@ -1,5 +1,5 @@
 {
-  "gemeten_op": "2026-08-07T12:56:49.368937+00:00",
+  "gemeten_op": "2026-08-07T12:58:10.710813+00:00",
   "resultaten": {
     "dashboard.frankvos.nl:443": {
       "dagen_tot_verval": 82,
@@ -93,12 +93,12 @@
       "dagen_tot_verval": 89,
       "drempel_overschreden": null,
       "hostname": "pop.frankvos.nl",
-      "not_after": "2027-01-01T00:00:00+00:00",
+      "not_after": "2026-11-05T05:17:22+00:00",
       "ok": true,
       "port": 995,
       "protocol": "pop3s",
-      "serial": "FAKE00000000000000000000000000000000ROLLBACKTEST",
-      "terugval": null
+      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "terugval": "serienummer gewijzigd (FAKE00000000000000000000000000000000ROLLBACKTEST → 05C2763DBFEFD44E61B921560C39736D9E87) maar notAfter ging NIET vooruit (2027-01-01T00:00:00+00:00 → 2026-11-05T05:17:22+00:00) — dit is geen renewal maar een terugval"
     },
     "pop.uptimepilot.nl:995": {
       "dagen_tot_verval": 89,
