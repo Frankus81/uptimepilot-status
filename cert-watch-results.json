@@ -93,11 +93,11 @@
       "dagen_tot_verval": 89,
       "drempel_overschreden": null,
       "hostname": "pop.frankvos.nl",
-      "not_after": "2026-11-05T05:17:22+00:00",
+      "not_after": "2027-01-01T00:00:00+00:00",
       "ok": true,
       "port": 995,
       "protocol": "pop3s",
-      "serial": "05C2763DBFEFD44E61B921560C39736D9E87",
+      "serial": "FAKE00000000000000000000000000000000ROLLBACKTEST",
       "terugval": null
     },
     "pop.uptimepilot.nl:995": {
