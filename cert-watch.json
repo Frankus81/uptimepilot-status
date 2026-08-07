@@ -8,6 +8,7 @@
     { "hostname": "dashboard.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
     { "hostname": "mcp.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
     { "hostname": "ops.uptimepilot.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "ops2.uptimepilot.nl", "port": 443, "starttls": null, "protocol": "https" },
     { "hostname": "uptimepilot.nl", "port": 443, "starttls": null, "protocol": "https" },
     { "hostname": "mail.frankvos.nl", "port": 993, "starttls": null, "protocol": "imaps" },
     { "hostname": "smtp.frankvos.nl", "port": 587, "starttls": "smtp", "protocol": "smtp-starttls" },
