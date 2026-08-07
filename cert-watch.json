@@ -1,14 +1,20 @@
 {
-  "_comment": "Certificaat-expiry-bewaking (blok 2026-08-07/S10.5). Eén regel per te bewaken host -- hostname/poort/starttls, geen aanname buiten dit bestand. `starttls` is null voor gewone HTTPS-hosts (443, directe TLS); gevuld (bv. \"smtp\") voor protocollen waar TLS pas na een plaintext-handshake begint (587/993 etc.) -- momenteel geen van de bewaakte hosts, veld staat klaar voor als dat ooit verandert.",
+  "_comment": "Certificaat-expiry-bewaking (blok 2026-08-07/S10.5, mailpoorten toegevoegd in S10.7). Eén regel per te bewaken endpoint -- hostname/poort/starttls/protocol, geen aanname buiten dit bestand. `starttls` is null voor directe TLS (443/993/995); gevuld (\"smtp\") voor STARTTLS-poorten (587) waar de TLS-handshake pas na een plaintext-commando begint. `protocol` is een leesbaar label voor het rapport/de heartbeat, geen functionele waarde. Meerdere entries met dezelfde hostname zijn toegestaan en bewust (bv. mail.frankvos.nl op zowel 443 als 993 -- twee losse, betekenisvol verschillende metingen) -- endpoints worden intern uniek geïdentificeerd via hostname+poort, nooit hostname alleen.",
   "hosts": [
-    { "hostname": "frankvos.nl", "port": 443, "starttls": null },
-    { "hostname": "webmail.frankvos.nl", "port": 443, "starttls": null },
-    { "hostname": "mail.frankvos.nl", "port": 443, "starttls": null },
-    { "hostname": "hub.frankvos.nl", "port": 443, "starttls": null },
-    { "hostname": "dashboard.frankvos.nl", "port": 443, "starttls": null },
-    { "hostname": "mcp.frankvos.nl", "port": 443, "starttls": null },
-    { "hostname": "ops.uptimepilot.nl", "port": 443, "starttls": null },
-    { "hostname": "uptimepilot.nl", "port": 443, "starttls": null }
+    { "hostname": "frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "webmail.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "mail.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "hub.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "dashboard.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "mcp.frankvos.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "ops.uptimepilot.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "uptimepilot.nl", "port": 443, "starttls": null, "protocol": "https" },
+    { "hostname": "mail.frankvos.nl", "port": 993, "starttls": null, "protocol": "imaps" },
+    { "hostname": "smtp.frankvos.nl", "port": 587, "starttls": "smtp", "protocol": "smtp-starttls" },
+    { "hostname": "pop.frankvos.nl", "port": 995, "starttls": null, "protocol": "pop3s" },
+    { "hostname": "mail.uptimepilot.nl", "port": 993, "starttls": null, "protocol": "imaps" },
+    { "hostname": "smtp.uptimepilot.nl", "port": 587, "starttls": "smtp", "protocol": "smtp-starttls" },
+    { "hostname": "pop.uptimepilot.nl", "port": 995, "starttls": null, "protocol": "pop3s" }
   ],
   "drempels_dagen": [21, 14, 7, 3]
 }

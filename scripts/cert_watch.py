@@ -1,28 +1,40 @@
 #!/usr/bin/env python3
-"""cert_watch.py -- TLS-certificaat-expiry-bewaking (blok
-2026-08-07/S10.5, regime uptimepilot).
+"""cert_watch.py -- TLS-certificaat-expiry- + terugval-bewaking (blok
+2026-08-07/S10.5, uitgebreid in S10.7, regime uptimepilot).
 
-Meet per host in `cert-watch.json` het daadwerkelijk gepresenteerde
-certificaat via `openssl s_client` -- geen aanname uit een
-configbestand, alleen wat er echt over de lijn komt. Schrijft bij
-ELKE run (ook een geslaagde, ook een mislukte):
+Meet per endpoint in `cert-watch.json` het daadwerkelijk gepresenteerde
+certificaat via `openssl s_client` (met `-starttls` waar nodig) --
+geen aanname uit een configbestand, alleen wat er echt over de lijn
+komt. Endpoints worden intern uniek geïdentificeerd via `hostname:poort`
+-- eenzelfde hostname mag op meerdere poorten voorkomen (bv.
+mail.frankvos.nl zowel op 443/https als 993/imaps, twee losse,
+betekenisvol verschillende metingen sinds S10.7).
 
-  - cert-watch-results.json  (machineleesbaar, laatste meting per host)
-  - cert-watch-heartbeat.md  (mens-leesbaar, tijdstempel + dagen-tot-
-    verval per host -- het bewijs dat de bewaking zelf nog leeft, zie
-    de heartbeat-rationale in de bloktekst: stilte mag nooit gelezen
-    worden als "in orde")
+Schrijft bij ELKE run (ook geslaagd, ook mislukt):
 
-Bij een overschreden drempel: opent of werkt een bestaand GitHub-issue
-bij (REST API, GH_PAT-token). Sluit het issue weer zodra de meting
-weer boven de hoogste drempel komt. Een onbereikbare host is een
-MEETFOUT, geen stille skip -- telt mee als probleem, verschijnt in het
-issue en laat de workflow rood kleuren, exact zoals Deel 3 van de
-bloktekst voorschrijft.
+  - cert-watch-results.json  (machineleesbaar, laatste meting per
+    endpoint, incl. serienummer -- dient ook als BASELINE voor de
+    volgende run se terugvaldetectie)
+  - cert-watch-heartbeat.md  (mens-leesbaar: poort, protocol, dagen-
+    tot-verval, serienummer per endpoint -- het bewijs dat de
+    bewaking zelf nog leeft)
 
-Exit-code 1 zodra er minstens één drempel-overschrijding of meetfout
-is (zichtbaar-rood-principe uit de bloktekst) -- 0 als alles gemeten
-kon worden en boven alle drempels blijft.
+Twee onafhankelijke signalen (Deel 2, S10.7):
+
+  1. Verval nadert: drempels uit `drempels_dagen` (dagen tot notAfter).
+  2. Terugval: het serienummer wijzigt EN de nieuwe notAfter ligt niet
+     later dan de vorige gemeten notAfter. Een normale renewal
+     (serienummer wijzigt, notAfter gaat vooruit) is GEEN terugval en
+     geeft geen melding -- anders leert dit mensen meldingen weg te
+     klikken bij elke renewal.
+
+Bij een probleem (drempel-overschrijding, terugval of meetfout): opent
+of werkt een bestaand GitHub-issue bij (REST API, GH_PAT-token). Sluit
+het issue weer zodra er geen problemen meer zijn. Een onbereikbare
+host is een MEETFOUT, geen stille skip.
+
+Exit-code 1 zodra er minstens één probleem is -- 0 als alles gemeten
+kon worden, boven alle drempels blijft en geen terugval toont.
 """
 from __future__ import annotations
 
@@ -45,9 +57,14 @@ TOKEN = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
 REPO = os.environ.get("GITHUB_REPOSITORY", "Frankus81/uptimepilot-status")
 
 
+def endpoint_id(hostname: str, port: int) -> str:
+    return f"{hostname}:{port}"
+
+
 def meet(host: str, port: int, starttls: str | None, timeout: int = 15) -> dict:
-    """Eén host meten. `ok: False` + `fout` bij elke afwijking van een
-    schone, leesbare notAfter-waarde -- nooit stilzwijgend overslaan."""
+    """Eén endpoint meten. `ok: False` + `fout` bij elke afwijking van
+    een schone, leesbare serial/notAfter-uitkomst -- nooit
+    stilzwijgend overslaan."""
     cmd = ["openssl", "s_client", "-connect", f"{host}:{port}", "-servername", host]
     if starttls:
         cmd += ["-starttls", starttls]
@@ -63,26 +80,58 @@ def meet(host: str, port: int, starttls: str | None, timeout: int = 15) -> dict:
         return {"ok": False, "fout": f"geen certificaat ontvangen (exit={s_client.returncode}): {detail}"}
 
     x509 = subprocess.run(
-        ["openssl", "x509", "-noout", "-enddate"],
+        ["openssl", "x509", "-noout", "-serial", "-enddate"],
         input=s_client.stdout, capture_output=True, text=True, timeout=timeout,
     )
-    out = x509.stdout.strip()
-    if not out.startswith("notAfter="):
-        return {"ok": False, "fout": f"kon notAfter niet uitlezen: {x509.stderr.strip()[:300]}"}
+    regels = {}
+    for regel in x509.stdout.strip().splitlines():
+        if "=" in regel:
+            k, _, v = regel.partition("=")
+            regels[k] = v
 
-    raw = out[len("notAfter="):]
+    if "notAfter" not in regels:
+        return {"ok": False, "fout": f"kon notAfter niet uitlezen: {x509.stderr.strip()[:300]}"}
+    if "serial" not in regels:
+        return {"ok": False, "fout": f"kon serial niet uitlezen: {x509.stderr.strip()[:300]}"}
+
+    raw = regels["notAfter"]
     try:
         dt = datetime.datetime.strptime(raw, "%b %d %H:%M:%S %Y %Z").replace(tzinfo=datetime.timezone.utc)
     except ValueError as e:
         return {"ok": False, "fout": f"onleesbare notAfter-waarde {raw!r}: {e}"}
 
     dagen = (dt - datetime.datetime.now(datetime.timezone.utc)).days
-    return {"ok": True, "not_after": dt.isoformat(), "dagen_tot_verval": dagen}
+    return {"ok": True, "not_after": dt.isoformat(), "dagen_tot_verval": dagen, "serial": regels["serial"]}
 
 
 def hoogste_overschreden_drempel(dagen: int, drempels: list[int]) -> int | None:
     overschreden = [d for d in drempels if dagen <= d]
     return min(overschreden) if overschreden else None
+
+
+def terugval_check(vorige: dict | None, nieuw: dict) -> str | None:
+    """Deel 2 (blok S10.7): een serienummerwijziging is normaal bij een
+    renewal (notAfter gaat vooruit) -- alleen wanneer de nieuwe notAfter
+    NIET later ligt dan de vorige is het een reële terugval (bv. een
+    vhost-alias die sneuvelt en terugvalt op een ouder certificaat).
+    Geen vorige/onbruikbare vorige meting -> geen conclusie, geen
+    valse melding op de allereerste run van een endpoint."""
+    if not vorige or not vorige.get("ok"):
+        return None
+    if vorige.get("serial") == nieuw.get("serial"):
+        return None
+    try:
+        vorige_dt = datetime.datetime.fromisoformat(vorige["not_after"])
+        nieuw_dt = datetime.datetime.fromisoformat(nieuw["not_after"])
+    except (KeyError, ValueError):
+        return None
+    if nieuw_dt <= vorige_dt:
+        return (
+            f"serienummer gewijzigd ({vorige['serial']} → {nieuw['serial']}) maar notAfter "
+            f"ging NIET vooruit ({vorige['not_after']} → {nieuw['not_after']}) — dit is geen "
+            f"renewal maar een terugval"
+        )
+    return None  # normale renewal: serienummer + notAfter allebei vooruit, geen melding
 
 
 def gh_api(method: str, path: str, payload: dict | None = None):
@@ -114,26 +163,52 @@ def vind_open_issue() -> dict | None:
     return None
 
 
+def laad_vorige_resultaten() -> dict:
+    """Baseline voor de terugvaldetectie: het resultatenbestand zoals
+    het NA de vorige run gecommit is (checkout gebeurt vóór dit script
+    draait). Ontbreekt het (allereerste run) -> lege baseline, geen
+    endpoint heeft dan een vorige meting om tegen te vergelijken."""
+    if not os.path.isfile(RESULTS_PATH):
+        return {}
+    try:
+        data = json.load(open(RESULTS_PATH, encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data.get("resultaten", {})
+
+
 def main() -> int:
     config = json.load(open(CONFIG_PATH, encoding="utf-8"))
     drempels = config.get("drempels_dagen", [21, 14, 7, 3])
     now = datetime.datetime.now(datetime.timezone.utc)
+    vorige_resultaten = laad_vorige_resultaten()
 
     resultaten: dict[str, dict] = {}
     problemen: list[str] = []
     for h in config["hosts"]:
+        eid = endpoint_id(h["hostname"], h.get("port", 443))
         r = meet(h["hostname"], h.get("port", 443), h.get("starttls"))
-        resultaten[h["hostname"]] = r
+        r["hostname"] = h["hostname"]
+        r["port"] = h.get("port", 443)
+        r["protocol"] = h.get("protocol", "https")
+        resultaten[eid] = r
+
         if not r["ok"]:
-            problemen.append(f"- **{h['hostname']}**: MEETFOUT — {r['fout']}")
+            problemen.append(f"- **{eid}** ({r['protocol']}): MEETFOUT — {r['fout']}")
             continue
+
         drempel = hoogste_overschreden_drempel(r["dagen_tot_verval"], drempels)
         r["drempel_overschreden"] = drempel
         if drempel is not None:
             problemen.append(
-                f"- **{h['hostname']}**: nog {r['dagen_tot_verval']} dagen tot verval "
+                f"- **{eid}** ({r['protocol']}): nog {r['dagen_tot_verval']} dagen tot verval "
                 f"(drempel {drempel} overschreden, verloopt {r['not_after']})"
             )
+
+        terugval = terugval_check(vorige_resultaten.get(eid), r)
+        r["terugval"] = terugval
+        if terugval:
+            problemen.append(f"- **{eid}** ({r['protocol']}): TERUGVAL — {terugval}")
 
     json.dump(
         {"gemeten_op": now.isoformat(), "resultaten": resultaten},
@@ -147,16 +222,18 @@ def main() -> int:
             "twee dagen niet, is de bewaking zelf het probleem (zie blok 2026-08-07/S10.5).\n\n"
         )
         f.write(f"Laatste meting: **{now.isoformat()}**\n\n")
-        f.write("| Host | Dagen tot verval | notAfter | Status |\n|---|---|---|---|\n")
-        for host, r in resultaten.items():
+        f.write("| Endpoint | Poort | Protocol | Dagen tot verval | Serienummer | Status |\n|---|---|---|---|---|---|\n")
+        for eid, r in resultaten.items():
             if r["ok"]:
+                statussen = []
                 if r.get("drempel_overschreden") is not None:
-                    status = f"⚠ drempel {r['drempel_overschreden']} overschreden"
-                else:
-                    status = "ok"
-                f.write(f"| {host} | {r['dagen_tot_verval']} | {r['not_after']} | {status} |\n")
+                    statussen.append(f"⚠ drempel {r['drempel_overschreden']} overschreden")
+                if r.get("terugval"):
+                    statussen.append("⚠ TERUGVAL")
+                status = " / ".join(statussen) if statussen else "ok"
+                f.write(f"| {r['hostname']} | {r['port']} | {r['protocol']} | {r['dagen_tot_verval']} | {r['serial']} | {status} |\n")
             else:
-                f.write(f"| {host} | — | — | MEETFOUT: {r['fout']} |\n")
+                f.write(f"| {r['hostname']} | {r['port']} | {r['protocol']} | — | — | MEETFOUT: {r['fout']} |\n")
 
     bestaand = vind_open_issue()
     if problemen:
@@ -173,10 +250,10 @@ def main() -> int:
     if bestaand:
         gh_api("PATCH", f"/repos/{REPO}/issues/{bestaand['number']}", {
             "state": "closed",
-            "body": ISSUE_MARKER + f"\n\nHersteld — alle certificaten weer boven de hoogste drempel.\n\n_Laatste meting: {now.isoformat()}_",
+            "body": ISSUE_MARKER + f"\n\nHersteld — geen drempel-overschrijdingen of terugvallen meer.\n\n_Laatste meting: {now.isoformat()}_",
         })
         print(f"issue #{bestaand['number']} gesloten (hersteld)")
-    print("alle certificaten OK, boven alle drempels")
+    print("alle endpoints OK: boven alle drempels, geen terugval")
     return 0
 
 
