@@ -1,43 +1,51 @@
 {
-  "gemeten_op": "2026-08-07T09:53:22.155761+00:00",
+  "gemeten_op": "2026-08-07T09:55:02.012974+00:00",
   "resultaten": {
     "dashboard.frankvos.nl": {
       "dagen_tot_verval": 82,
+      "drempel_overschreden": null,
       "not_after": "2026-10-28T14:12:29+00:00",
       "ok": true
     },
     "frankvos.nl": {
       "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
       "not_after": "2026-11-05T05:17:22+00:00",
       "ok": true
     },
     "hub.frankvos.nl": {
       "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
       "not_after": "2026-11-05T05:49:34+00:00",
       "ok": true
     },
     "mail.frankvos.nl": {
       "dagen_tot_verval": 51,
+      "drempel_overschreden": null,
       "not_after": "2026-09-27T15:50:00+00:00",
       "ok": true
     },
     "mcp.frankvos.nl": {
       "dagen_tot_verval": 86,
+      "drempel_overschreden": null,
       "not_after": "2026-11-01T12:23:21+00:00",
       "ok": true
     },
     "ops.uptimepilot.nl": {
       "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
       "not_after": "2026-11-04T18:04:54+00:00",
       "ok": true
     },
     "uptimepilot.nl": {
       "dagen_tot_verval": 19,
+      "drempel_overschreden": 21,
       "not_after": "2026-08-27T06:24:54+00:00",
       "ok": true
     },
     "webmail.frankvos.nl": {
       "dagen_tot_verval": 89,
+      "drempel_overschreden": null,
       "not_after": "2026-11-05T05:17:22+00:00",
       "ok": true
     }
