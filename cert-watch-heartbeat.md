@@ -2,7 +2,7 @@
 
 Deze regel bewijst dat de bewaking zelf leeft -- verandert deze meer dan twee dagen niet, is de bewaking zelf het probleem (zie blok 2026-08-07/S10.5).
 
-Laatste meting: **2026-08-07T09:50:58.094312+00:00**
+Laatste meting: **2026-08-07T09:52:20.745667+00:00**
 
 | Host | Dagen tot verval | notAfter | Status |
 |---|---|---|---|
