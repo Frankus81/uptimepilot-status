@@ -128,6 +128,7 @@ def main() -> int:
             problemen.append(f"- **{h['hostname']}**: MEETFOUT — {r['fout']}")
             continue
         drempel = hoogste_overschreden_drempel(r["dagen_tot_verval"], drempels)
+        r["drempel_overschreden"] = drempel
         if drempel is not None:
             problemen.append(
                 f"- **{h['hostname']}**: nog {r['dagen_tot_verval']} dagen tot verval "
@@ -149,7 +150,11 @@ def main() -> int:
         f.write("| Host | Dagen tot verval | notAfter | Status |\n|---|---|---|---|\n")
         for host, r in resultaten.items():
             if r["ok"]:
-                f.write(f"| {host} | {r['dagen_tot_verval']} | {r['not_after']} | ok |\n")
+                if r.get("drempel_overschreden") is not None:
+                    status = f"⚠ drempel {r['drempel_overschreden']} overschreden"
+                else:
+                    status = "ok"
+                f.write(f"| {host} | {r['dagen_tot_verval']} | {r['not_after']} | {status} |\n")
             else:
                 f.write(f"| {host} | — | — | MEETFOUT: {r['fout']} |\n")
 
