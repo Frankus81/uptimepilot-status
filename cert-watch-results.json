@@ -1,8 +1,8 @@
 {
-  "gemeten_op": "2026-08-16T07:01:08.946671+00:00",
+  "gemeten_op": "2026-08-17T07:18:23.807601+00:00",
   "resultaten": {
     "dashboard.frankvos.nl:443": {
-      "dagen_tot_verval": 3637,
+      "dagen_tot_verval": 3636,
       "drempel_overschreden": null,
       "hostname": "dashboard.frankvos.nl",
       "not_after": "2036-07-31T14:44:42+00:00",
@@ -13,7 +13,7 @@
       "terugval": null
     },
     "frankvos.nl:443": {
-      "dagen_tot_verval": 80,
+      "dagen_tot_verval": 79,
       "drempel_overschreden": null,
       "hostname": "frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
@@ -24,7 +24,7 @@
       "terugval": null
     },
     "hub.frankvos.nl:443": {
-      "dagen_tot_verval": 80,
+      "dagen_tot_verval": 79,
       "drempel_overschreden": null,
       "hostname": "hub.frankvos.nl",
       "not_after": "2026-11-05T05:49:34+00:00",
@@ -35,7 +35,7 @@
       "terugval": null
     },
     "mail.frankvos.nl:443": {
-      "dagen_tot_verval": 80,
+      "dagen_tot_verval": 79,
       "drempel_overschreden": null,
       "hostname": "mail.frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
@@ -46,7 +46,7 @@
       "terugval": null
     },
     "mail.frankvos.nl:993": {
-      "dagen_tot_verval": 80,
+      "dagen_tot_verval": 79,
       "drempel_overschreden": null,
       "hostname": "mail.frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
@@ -57,7 +57,7 @@
       "terugval": null
     },
     "mail.uptimepilot.nl:993": {
-      "dagen_tot_verval": 81,
+      "dagen_tot_verval": 80,
       "drempel_overschreden": null,
       "hostname": "mail.uptimepilot.nl",
       "not_after": "2026-11-05T11:42:05+00:00",
@@ -68,7 +68,7 @@
       "terugval": null
     },
     "mcp.frankvos.nl:443": {
-      "dagen_tot_verval": 77,
+      "dagen_tot_verval": 76,
       "drempel_overschreden": null,
       "hostname": "mcp.frankvos.nl",
       "not_after": "2026-11-01T12:23:21+00:00",
@@ -79,7 +79,7 @@
       "terugval": null
     },
     "ops.uptimepilot.nl:443": {
-      "dagen_tot_verval": 82,
+      "dagen_tot_verval": 81,
       "drempel_overschreden": null,
       "hostname": "ops.uptimepilot.nl",
       "not_after": "2026-11-06T07:45:06+00:00",
@@ -90,7 +90,7 @@
       "terugval": null
     },
     "ops2.uptimepilot.nl:443": {
-      "dagen_tot_verval": 82,
+      "dagen_tot_verval": 81,
       "drempel_overschreden": null,
       "hostname": "ops2.uptimepilot.nl",
       "not_after": "2026-11-06T07:45:06+00:00",
@@ -101,7 +101,7 @@
       "terugval": null
     },
     "pop.frankvos.nl:995": {
-      "dagen_tot_verval": 80,
+      "dagen_tot_verval": 79,
       "drempel_overschreden": null,
       "hostname": "pop.frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
@@ -112,7 +112,7 @@
       "terugval": null
     },
     "pop.uptimepilot.nl:995": {
-      "dagen_tot_verval": 81,
+      "dagen_tot_verval": 80,
       "drempel_overschreden": null,
       "hostname": "pop.uptimepilot.nl",
       "not_after": "2026-11-05T11:42:05+00:00",
@@ -123,7 +123,7 @@
       "terugval": null
     },
     "smtp.frankvos.nl:587": {
-      "dagen_tot_verval": 80,
+      "dagen_tot_verval": 79,
       "drempel_overschreden": null,
       "hostname": "smtp.frankvos.nl",
       "not_after": "2026-11-05T05:17:22+00:00",
@@ -134,7 +134,7 @@
       "terugval": null
     },
     "smtp.uptimepilot.nl:587": {
-      "dagen_tot_verval": 81,
+      "dagen_tot_verval": 80,
       "drempel_overschreden": null,
       "hostname": "smtp.uptimepilot.nl",
       "not_after": "2026-11-05T11:42:05+00:00",
@@ -145,7 +145,7 @@
       "terugval": null
     },
     "uptimepilot.nl:443": {
-      "dagen_tot_verval": 81,
+      "dagen_tot_verval": 80,
       "drempel_overschreden": null,
       "hostname": "uptimepilot.nl",
       "not_after": "2026-11-05T11:42:05+00:00",
@@ -156,7 +156,7 @@
       "terugval": null
     },
     "webmail.frankvos.nl:443": {
-      "dagen_tot_verval": 81,
+      "dagen_tot_verval": 80,
       "drempel_overschreden": null,
       "hostname": "webmail.frankvos.nl",
       "not_after": "2026-11-05T16:17:21+00:00",
