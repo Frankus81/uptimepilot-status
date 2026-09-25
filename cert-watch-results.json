@@ -1,17 +1,6 @@
 {
-  "gemeten_op": "2026-09-24T11:52:51.423445+00:00",
+  "gemeten_op": "2026-09-25T01:57:16.162252+00:00",
   "resultaten": {
-    "dashboard.frankvos.nl:443": {
-      "dagen_tot_verval": 3598,
-      "drempel_overschreden": null,
-      "hostname": "dashboard.frankvos.nl",
-      "not_after": "2036-07-31T14:44:42+00:00",
-      "ok": true,
-      "port": 443,
-      "protocol": "https",
-      "serial": "5EEA9279459786AE8082BE8FF267FB3AEE191E4C",
-      "terugval": null
-    },
     "frankvos.nl:443": {
       "dagen_tot_verval": 41,
       "drempel_overschreden": null,
@@ -57,7 +46,7 @@
       "terugval": null
     },
     "mail.uptimepilot.nl:993": {
-      "dagen_tot_verval": 54,
+      "dagen_tot_verval": 53,
       "drempel_overschreden": null,
       "hostname": "mail.uptimepilot.nl",
       "not_after": "2026-11-18T01:19:47+00:00",
@@ -68,7 +57,7 @@
       "terugval": null
     },
     "mcp.frankvos.nl:443": {
-      "dagen_tot_verval": 38,
+      "dagen_tot_verval": 37,
       "drempel_overschreden": null,
       "hostname": "mcp.frankvos.nl",
       "not_after": "2026-11-01T12:23:21+00:00",
@@ -112,7 +101,7 @@
       "terugval": null
     },
     "pop.uptimepilot.nl:995": {
-      "dagen_tot_verval": 54,
+      "dagen_tot_verval": 53,
       "drempel_overschreden": null,
       "hostname": "pop.uptimepilot.nl",
       "not_after": "2026-11-18T01:19:47+00:00",
@@ -134,7 +123,7 @@
       "terugval": null
     },
     "smtp.uptimepilot.nl:587": {
-      "dagen_tot_verval": 54,
+      "dagen_tot_verval": 53,
       "drempel_overschreden": null,
       "hostname": "smtp.uptimepilot.nl",
       "not_after": "2026-11-18T01:19:47+00:00",
@@ -145,7 +134,7 @@
       "terugval": null
     },
     "uptimepilot.nl:443": {
-      "dagen_tot_verval": 54,
+      "dagen_tot_verval": 53,
       "drempel_overschreden": null,
       "hostname": "uptimepilot.nl",
       "not_after": "2026-11-18T01:19:47+00:00",
@@ -156,7 +145,7 @@
       "terugval": null
     },
     "webmail.frankvos.nl:443": {
-      "dagen_tot_verval": 42,
+      "dagen_tot_verval": 41,
       "drempel_overschreden": null,
       "hostname": "webmail.frankvos.nl",
       "not_after": "2026-11-05T16:17:21+00:00",
