@@ -2,21 +2,21 @@
 
 Deze regel bewijst dat de bewaking zelf leeft -- verandert deze meer dan twee dagen niet, is de bewaking zelf het probleem (zie blok 2026-08-07/S10.5).
 
-Laatste meting: **2026-10-06T13:22:52.568662+00:00**
+Laatste meting: **2026-10-07T13:31:02.776666+00:00**
 
 | Endpoint | Poort | Protocol | Dagen tot verval | Serienummer | Status |
 |---|---|---|---|---|---|
-| frankvos.nl | 443 | https | 87 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
-| webmail.frankvos.nl | 443 | https | 87 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
-| mail.frankvos.nl | 443 | https | 87 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
-| hub.frankvos.nl | 443 | https | 29 | 0512EF393E2E4C1BA8DFE2FD54C4503FEB12 | ok |
-| mcp.frankvos.nl | 443 | https | 85 | 0670324F18962B2A6B8FE6674668712F124A | ok |
-| ops.uptimepilot.nl | 443 | https | 30 | 069AAB7FCC3C89F554DFCB518DCE4F6B17AC | ok |
-| ops2.uptimepilot.nl | 443 | https | 30 | 069AAB7FCC3C89F554DFCB518DCE4F6B17AC | ok |
-| uptimepilot.nl | 443 | https | 42 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
-| mail.frankvos.nl | 993 | imaps | 87 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
-| smtp.frankvos.nl | 587 | smtp-starttls | 87 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
-| pop.frankvos.nl | 995 | pop3s | 87 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
-| mail.uptimepilot.nl | 993 | imaps | 42 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
-| smtp.uptimepilot.nl | 587 | smtp-starttls | 42 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
-| pop.uptimepilot.nl | 995 | pop3s | 42 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
+| frankvos.nl | 443 | https | 86 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
+| webmail.frankvos.nl | 443 | https | 86 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
+| mail.frankvos.nl | 443 | https | 86 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
+| hub.frankvos.nl | 443 | https | 28 | 0512EF393E2E4C1BA8DFE2FD54C4503FEB12 | ok |
+| mcp.frankvos.nl | 443 | https | 84 | 0670324F18962B2A6B8FE6674668712F124A | ok |
+| ops.uptimepilot.nl | 443 | https | 29 | 069AAB7FCC3C89F554DFCB518DCE4F6B17AC | ok |
+| ops2.uptimepilot.nl | 443 | https | 29 | 069AAB7FCC3C89F554DFCB518DCE4F6B17AC | ok |
+| uptimepilot.nl | 443 | https | 41 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
+| mail.frankvos.nl | 993 | imaps | 86 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
+| smtp.frankvos.nl | 587 | smtp-starttls | 86 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
+| pop.frankvos.nl | 995 | pop3s | 86 | 053E1EF94C42F557682EB889AE653ADB612F | ok |
+| mail.uptimepilot.nl | 993 | imaps | 41 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
+| smtp.uptimepilot.nl | 587 | smtp-starttls | 41 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
+| pop.uptimepilot.nl | 995 | pop3s | 41 | 05D220DB76C7F769366183CD1A75B92195F8 | ok |
