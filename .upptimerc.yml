@@ -5,6 +5,8 @@
 # Actions-runners (wisselende IP's) permanent als "down" verschijnen.
 # Verruiming van die whitelist voor dit doel is expliciet afgewezen —
 # zie het blok en het decision-fragment in de uptimepilot-repo.
+# Uitzondering (blok 2026-10-23/S41.38): ops2.uptimepilot.nl/health is een exacte nginx-route
+# buiten de whitelist (alleen GET/HEAD, body {"code":0}); de rest van de vhost blijft 403.
 owner: Frankus81
 repo: uptimepilot-status
 
@@ -13,6 +15,12 @@ sites:
     url: https://uptimepilot.nl/
   - name: UptimePilot Analytics
     url: https://analytics.uptimepilot.nl/script.js
+  - name: Platform
+    url: https://ops2.uptimepilot.nl/health
+    method: GET
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"code":0'
 
 status-website:
   cname: status.uptimepilot.nl
